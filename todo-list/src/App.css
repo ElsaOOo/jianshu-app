@@ -1,0 +1,11 @@
+html,body {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+.App {
+  padding: 20px;
+}
+

@@ -8,9 +8,20 @@ import {
   NavSearch,
   Addition,
   Button,
-  SearchWraper
+  SearchWraper,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoItem,
+  SearchInfoList
 } from './style';
 import { actionCreators } from './store';
+
+
+const getListArea = (show) => {
+  return show ? <SearchInfoDiv /> : null
+}
+
 
 const Header = (props) =>  (
   <HeaderWrapper>
@@ -29,6 +40,7 @@ const Header = (props) =>  (
           onBlur={props.inputBlur}
         ></NavSearch>
         <i className="iconfont">&#xe623;</i>
+        { props.focused ? <SearchInfoDiv /> : null}
       </SearchWraper>
     </Nav>
     <Addition>
@@ -41,8 +53,25 @@ const Header = (props) =>  (
   </HeaderWrapper>
 )
 
+const SearchInfoDiv = () => (
+  <SearchInfo>
+    <SearchInfoTitle>
+      热门搜索
+      <SearchInfoSwitch>换一批</SearchInfoSwitch>
+    </SearchInfoTitle>
+    <SearchInfoList>
+      <SearchInfoItem>语文</SearchInfoItem>
+      <SearchInfoItem>数学</SearchInfoItem>
+      <SearchInfoItem>科学</SearchInfoItem>
+      <SearchInfoItem>化学</SearchInfoItem>
+      <SearchInfoItem>物理</SearchInfoItem>
+      <SearchInfoItem>生物</SearchInfoItem>
+    </SearchInfoList>
+  </SearchInfo>
+)
+
 const mapStateToProps = (state) => ({
-  focused: state.header.get('focused')
+  focused: state.get('header').get('focused')
 })
 const mapDispatchToProps = (dispatch) => ({
   inputFocus: () => {

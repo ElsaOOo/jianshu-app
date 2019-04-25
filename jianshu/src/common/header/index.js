@@ -10,6 +10,7 @@ import {
   Button,
   SearchWraper
 } from './style';
+import { actionCreators } from './store';
 
 const Header = (props) =>  (
   <HeaderWrapper>
@@ -41,19 +42,15 @@ const Header = (props) =>  (
 )
 
 const mapStateToProps = (state) => ({
-  focused: state.focused
+  focused: state.header.get('focused')
 })
 const mapDispatchToProps = (dispatch) => ({
   inputFocus: () => {
-    const action = {
-      type: 'input_focus'
-    };
+    const action = actionCreators.inputFocus();
     dispatch(action);
   },
   inputBlur: () => {
-    const action = {
-      type: 'input_blur'
-    };
+    const action = actionCreators.inputBlur();
     dispatch(action);
   }
 })

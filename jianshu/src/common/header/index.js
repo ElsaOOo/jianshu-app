@@ -36,10 +36,10 @@ class Header extends Component {
           <SearchWraper>
             <NavSearch
               className={focused ? 'focused' : ''}
-              onFocus={inputFocus}
+              onFocus={() => inputFocus(list) }
               onBlur={inputBlur}
             ></NavSearch>
-            <i className="iconfont">&#xe623;</i>
+            <i className="iconfont zoom">&#xe623;</i>
             { (focused || mouseIn ) ? <SearchInfoDiv data={list} page={page} mouseEnter={mouseEnter} mouseLeave={mouseLeave} changePage={changePage}/> : null }
           </SearchWraper>
         </Nav>
@@ -58,13 +58,16 @@ class Header extends Component {
 
 const SearchInfoDiv = (props) => {
   const {data, page, mouseEnter, mouseLeave, changePage } = props;
+  let spinIcon;
   const newList = data.toJS();
   const pageList = newList.slice(page*10, ((page+1)*10));
   return (
     <SearchInfo onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
       <SearchInfoTitle>
         热门搜索
-        <SearchInfoSwitch onClick={() => changePage(page)}>换一批</SearchInfoSwitch>
+        <SearchInfoSwitch onClick={() => changePage(page, spinIcon)}>
+          <i ref={(icon) => {spinIcon = icon}} className="iconfont spin">&#xe851;</i>换一批
+        </SearchInfoSwitch>
       </SearchInfoTitle>
       <SearchInfoList>
         {
@@ -84,8 +87,10 @@ const mapStateToProps = (state) => ({
   page: state.get('header').get('page'),
 })
 const mapDispatchToProps = (dispatch) => ({
-  inputFocus: () => {
-    dispatch(actionCreators.getList())
+  inputFocus: (list) => {
+    if (list.toJS().length === 0) {
+      dispatch(actionCreators.getList())
+    }
     dispatch(actionCreators.inputFocus());
   },
   inputBlur: () => {
@@ -98,8 +103,11 @@ const mapDispatchToProps = (dispatch) => ({
   mouseLeave: () => {
     dispatch(actionCreators.mouseLeave());
   },
-  changePage: (page) => {
-    console.log(page)
+  changePage: (page, spinIcon) => {
+    let transformVal = spinIcon.style.transform; 
+    let originAngle = transformVal === '' ? parseInt(Number(transformVal), 10) : parseInt(transformVal.replace(/[^0-9]/ig, ''), 10);
+    originAngle = originAngle === 0 ? 360 : (originAngle + 360);
+    spinIcon.style.transform = `rotate(${originAngle}deg)`;
     dispatch(actionCreators.changePage(page))
   }
 })

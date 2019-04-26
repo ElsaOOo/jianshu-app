@@ -88,7 +88,7 @@ const mapStateToProps = (state) => ({
 })
 const mapDispatchToProps = (dispatch) => ({
   inputFocus: (list) => {
-    if (list.toJS().length === 0) {
+    if (list.size === 0) {
       dispatch(actionCreators.getList())
     }
     dispatch(actionCreators.inputFocus());

@@ -5,8 +5,6 @@ import {
   TopicItem
  } from '../style';
 
-import topicItemPic from 'static/image/topicItem.jpeg';
-
 const TopicItems = (props) => {
   return props.topicList.map(item => (
     <TopicItem key={item.id}>
@@ -19,7 +17,6 @@ const TopicItems = (props) => {
 export class Topic extends Component {
   render() {
     const { topicList } = this.props;
-    console.log(topicList);
     return (
       <TopicWrapper>
         <TopicItems topicList={topicList}/>

@@ -149,12 +149,41 @@ export const QrBox = styled.div`
       content: '';
       position: absolute;
       bottom: -9px;
-      left: 84px;
+      left: 82px;
       border-right: solid 10px transparent;
       border-top: solid 10px #fff;
       border-left: solid 10px transparent;
       filter: drop-shadow(1px 0 0 #CAD5E0) drop-shadow(0 1.5px 0 #CAD5E1);
     }
+  }
+`
+
+export const AuthorRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  .author-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .info {
+    margin-left: 5px;
+    .desc {
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+    }
+  }
+  .auto-span {
+    flex: 1;
+  }
+  .follow {
+    font-size: 13px;
+    color: #42c02e;
+    margin-top: -30px;
+    cursor: pointer;
   }
 `
 

@@ -18,7 +18,7 @@ class Home extends Component {
         </HomeLeft>
         <HomeRight>
           <Recommond />
-          <Writer />
+          <Writer className="writer-col"/>
         </HomeRight>
       </HomeWrapper>
     )

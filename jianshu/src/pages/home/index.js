@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import { List, Recommond, Topic, Writer } from './components';
 import {
   HomeWrapper,
   HomeLeft,
   HomeRight
 } from './style'
+import { actionCreators } from './store';
 import bannerImg from 'static/image/banner.jpg';
 
 class Home extends Component {
+
+  componentDidMount() {
+    this.props.getHomeData();
+  }
+
+
   render() {
     return (
       <HomeWrapper>
@@ -25,4 +33,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapDispatch = (dispatch) => ({
+  getHomeData: () => {  
+    dispatch(actionCreators.queryHomeData())
+  }
+})
+
+export default connect(null, mapDispatch)(Home);

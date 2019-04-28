@@ -14,3 +14,14 @@ export const Header = styled.div`
   color: #333;
   font-weight: bold;
 `
+
+export const ArticleBreif = styled.div`
+  display: flex;
+  align-items: center;
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+`

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { 
   HeaderWrapper,
   Logo,
@@ -17,7 +18,7 @@ import {
 } from './style';
 import { actionCreators } from './store';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
     const {focused, list,page, inputFocus, 
       inputBlur, mouseEnter, mouseLeave,
@@ -25,7 +26,9 @@ class Header extends Component {
      } = this.props;
     return (
       <HeaderWrapper>
-        <Logo href="/"/>
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载APP</NavItem>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   CateItem,
   DownloadItem,
@@ -16,7 +16,7 @@ const ToolTip = () => (
   </QrBox>
 )
 
-export class Recommend extends Component {
+export class Recommend extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

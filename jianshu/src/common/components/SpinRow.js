@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { 
   SwitchRow,
   SwitchSpin
 } from './style';
 
-export class SpinRow extends Component {
+export class SpinRow extends PureComponent {
 
   changePage = () => {
     console.log('click')

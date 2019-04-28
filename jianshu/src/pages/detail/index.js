@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
-
-export class Detail extends Component {
+import React, { PureComponent } from 'react'
+import {
+  DetailWrapper,
+  Header
+} from './style'
+export class Detail extends PureComponent {
   render() {
     return (
-      <div>
-        Detail
-      </div>
+      <DetailWrapper>
+        <Header>Vue项目引进ElementUI组件的方法</Header>
+      </DetailWrapper>
     )
   }
 }

@@ -18,6 +18,11 @@ const getArticleList = (data) => ({
   list: fromJS(data),
 })
 
+const addMoreArticle = (data) => ({
+  type: actionTypes.ADD_MORE_ARTICLE,
+  list: fromJS(data)
+})
+
 export const queryAuthorList = () => {
   return (dispatch) => {
     axios.get('/api/authorlist.json').then(res => {
@@ -41,3 +46,20 @@ export const queryHomeData = () => {
     })
   }
 }
+
+export const getMoreList = () => {
+  return (dispatch) => {
+    console.log('click')
+    axios.get('/api/homelist.json').then(res => {
+      const { articleList } = res.data.data;
+      dispatch(addMoreArticle(articleList));
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+}
+
+export const changeScrollShow = (isShow) => ({
+  type: actionTypes.CHANGE_SHOW_SCROLL,
+  isShow,
+})

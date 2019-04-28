@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { actionCreators } from '../store';
 import SpinRow from 'common/components/SpinRow';
@@ -21,7 +21,7 @@ const Author = (props) => {
   ))
 }
 
-export class Writer extends Component {
+export class Writer extends PureComponent {
 
 
   componentDidMount() {
